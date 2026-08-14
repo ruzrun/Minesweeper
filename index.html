@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Minesweeper 💣</title>
+
+    <link
+        rel="stylesheet"
+        href="minesweeper.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         TOP BUTTONS
+    ========================================== -->
+
+    <a
+        href="https://ruzrun.github.io/arcade-game/"
+        class="top-button back-button"
+    >
+        🎮 Arcade
+    </a>
+
+
+    <button
+        id="musicButton"
+        class="top-button music-button"
+    >
+        🎵 Music On
+    </button>
+
+
+
+    <!-- =========================================
+         GAME
+    ========================================== -->
+
+    <main class="game-container">
+
+
+        <h1>
+            Minesweeper 💣
+        </h1>
+
+
+        <p class="subtitle">
+            Clear the board without hitting a mine.
+        </p>
+
+
+
+        <!-- =====================================
+             DIFFICULTY
+        ====================================== -->
+
+        <div class="difficulty-buttons">
+
+            <button
+                class="difficulty-button active"
+                data-difficulty="beginner"
+            >
+                Beginner
+            </button>
+
+            <button
+                class="difficulty-button"
+                data-difficulty="intermediate"
+            >
+                Intermediate
+            </button>
+
+            <button
+                class="difficulty-button"
+                data-difficulty="expert"
+            >
+                Expert
+            </button>
+
+        </div>
+
+
+
+        <!-- =====================================
+             GAME INFO
+        ====================================== -->
+
+        <div class="minefield-panel">
+
+
+            <!-- MINE COUNTER -->
+
+            <div class="counter">
+
+                <span class="counter-icon">
+                    💣
+                </span>
+
+                <span id="mineCount">
+                    10
+                </span>
+
+            </div>
+
+
+
+            <!-- FACE / RESTART -->
+
+            <button
+                id="restartButton"
+                class="face-button"
+                aria-label="Restart game"
+            >
+                🙂
+            </button>
+
+
+
+            <!-- TIMER -->
+
+            <div class="counter">
+
+                <span class="counter-icon">
+                    ⏱️
+                </span>
+
+                <span id="timer">
+                    000
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =====================================
+             GAME MESSAGE
+        ====================================== -->
+
+        <p id="gameMessage">
+            Click a square to begin! 💣
+        </p>
+
+
+
+        <!-- =====================================
+             MINESWEEPER BOARD
+        ====================================== -->
+
+        <div
+            id="gameBoard"
+            class="mine-board"
+            aria-label="Minesweeper board"
+        ></div>
+
+
+
+        <!-- =====================================
+             INSTRUCTIONS
+        ====================================== -->
+
+        <div class="instructions">
+
+            <p>
+                🖱️ Click to reveal
+            </p>
+
+            <p>
+                🚩 Right-click to flag
+            </p>
+
+            <p>
+                📱 Long-press to flag on mobile
+            </p>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="minesweeper.js"></script>
+
+
+</body>
+
+</html>
