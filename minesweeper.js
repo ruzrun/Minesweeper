@@ -39,7 +39,7 @@ const difficulties = {
 
     expert: {
         rows: 16,
-        cols: 30,
+        cols: 16,
         mines: 99
     }
 
