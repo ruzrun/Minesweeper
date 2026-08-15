@@ -1019,6 +1019,9 @@ function winGame() {
     gameWon = true;
 
     stopTimer();
+    updateMineCounter();
+    updateFlagCounter();
+    updateBoard();
 
 
     /*
