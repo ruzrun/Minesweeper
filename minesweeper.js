@@ -1519,6 +1519,22 @@ document.addEventListener(
     }
 );
 
+/* =========================================================
+   FLAG
+========================================================= */
+
+
+function updateFlagCounter() {
+
+    if (flagCountDisplay) {
+
+        flagCountDisplay.textContent =
+            flagsUsed;
+
+    }
+
+}
+
 
 /* =========================================================
    START GAME
