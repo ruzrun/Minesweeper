@@ -18,6 +18,9 @@ const musicButton = document.getElementById("musicButton");
 const difficultyButtons =
     document.querySelectorAll(".difficulty-button");
 
+const flagCountDisplay =
+    document.getElementById("flagCount");
+
 
 /* =========================================================
    DIFFICULTIES
