@@ -35,15 +35,15 @@ const difficulties = {
     },
 
     intermediate: {
-        rows: 16,
-        cols: 16,
+        rows: 12,
+        cols: 12,
         mines: 40
     },
 
     expert: {
         rows: 16,
         cols: 16,
-        mines: 99
+        mines: 90
     }
 
 };
