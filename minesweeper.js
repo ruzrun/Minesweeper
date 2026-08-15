@@ -322,6 +322,9 @@ function renderBoard() {
     gameBoard.style.gridTemplateColumns =
         `repeat(${cols}, 1fr)`;
 
+    gameBoard.style.gridTemplateRows =
+        `repeat(${rows}, 1fr)`;
+
 
     for (let row = 0; row < rows; row++) {
 
