@@ -1,6 +1,6 @@
 /* =========================================================
    MINESWEEPER 💣
-   Classic Style
+   Classic Fixed Board Style
 ========================================================= */
 
 * {
@@ -10,16 +10,27 @@
 
 html,
 body {
+    width: 100%;
+    height: 100%;
+
     margin: 0;
     padding: 0;
-    min-height: 100%;
+
+    overflow: hidden;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+
     background: #d6d6d6;
+
     color: #222;
-    overflow-x: hidden;
+
+    position: fixed;
+
+    inset: 0;
+
+    touch-action: manipulation;
 }
 
 
@@ -29,6 +40,7 @@ body {
 
 .top-button {
     position: fixed;
+
     top: 15px;
 
     height: 42px;
@@ -36,18 +48,22 @@ body {
     padding: 0 15px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     border: 2px solid #777;
+
     border-radius: 7px;
 
     background: #eeeeee;
 
     color: #222;
+
     text-decoration: none;
 
     font-size: 14px;
+
     font-weight: bold;
 
     cursor: pointer;
@@ -55,7 +71,7 @@ body {
     box-shadow:
         0 3px 7px rgba(0, 0, 0, 0.15);
 
-    z-index: 20;
+    z-index: 50;
 
     transition:
         transform 0.15s ease,
@@ -87,15 +103,23 @@ body {
 
 .game-container {
     width: min(
-        calc(100% - 30px),
+        calc(100% - 20px),
         900px
     );
 
-    margin: 80px auto 40px;
+    height: calc(100vh - 70px);
+
+    margin: 70px auto 0;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
+    justify-content: flex-start;
+
+    overflow: hidden;
 }
 
 
@@ -112,12 +136,14 @@ h1 {
         42px
     );
 
+    line-height: 1.1;
+
     text-align: center;
 }
 
 
 .subtitle {
-    margin: 7px 0 18px;
+    margin: 6px 0 14px;
 
     color: #555;
 
@@ -128,17 +154,18 @@ h1 {
 
 
 /* =========================================================
-   DIFFICULTY BUTTONS
+   DIFFICULTY
 ========================================================= */
 
 .difficulty-buttons {
     display: flex;
 
+    align-items: center;
     justify-content: center;
 
     gap: 7px;
 
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 
     flex-wrap: wrap;
 }
@@ -156,6 +183,7 @@ h1 {
     color: #222;
 
     font-size: 13px;
+
     font-weight: bold;
 
     cursor: pointer;
@@ -193,18 +221,20 @@ h1 {
 
 
 /* =========================================================
-   CLASSIC MINESWEEPER PANEL
+   CLASSIC TOP PANEL
 ========================================================= */
 
 .minefield-panel {
     width: min(
-        100%,
+        90vw,
         700px
     );
 
-    min-height: 75px;
+    height: 68px;
 
-    padding: 10px 14px;
+    flex-shrink: 0;
+
+    padding: 9px 13px;
 
     display: flex;
 
@@ -222,9 +252,6 @@ h1 {
     border-left-color: #ffffff;
     border-right-color: #707070;
     border-bottom-color: #707070;
-
-    box-shadow:
-        inset 1px 1px 0 #dfdfdf;
 }
 
 
@@ -234,6 +261,7 @@ h1 {
 
 .counter {
     min-width: 95px;
+
     height: 42px;
 
     padding: 4px 8px;
@@ -270,22 +298,25 @@ h1 {
 .counter-icon {
     font-size: 16px;
 
-    filter:
-        grayscale(1);
+    filter: grayscale(1);
 }
 
 
 /* =========================================================
-   CLASSIC FACE BUTTON
+   FACE BUTTON
 ========================================================= */
 
 .face-button {
     width: 48px;
+
     height: 48px;
+
+    flex-shrink: 0;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 0;
@@ -316,15 +347,17 @@ h1 {
 
 
 /* =========================================================
-   GAME MESSAGE
+   MESSAGE
 ========================================================= */
 
 #gameMessage {
-    margin: 14px 0;
+    margin: 8px 0;
 
-    min-height: 22px;
+    min-height: 18px;
 
-    font-size: 14px;
+    flex-shrink: 0;
+
+    font-size: 13px;
 
     font-weight: bold;
 
@@ -335,16 +368,29 @@ h1 {
 
 
 /* =========================================================
-   BOARD
+   FIXED BOARD
 ========================================================= */
 
 .mine-board {
-    display: grid;
-
     width: min(
-        100%,
+        90vw,
         700px
     );
+
+    /*
+        IMPORTANT:
+        Every difficulty uses exactly
+        this same outer board size.
+    */
+
+    height: min(
+        60vh,
+        600px
+    );
+
+    flex-shrink: 0;
+
+    display: grid;
 
     background: #c0c0c0;
 
@@ -357,6 +403,8 @@ h1 {
 
     padding: 4px;
 
+    overflow: hidden;
+
     user-select: none;
 
     touch-action: manipulation;
@@ -364,18 +412,25 @@ h1 {
 
 
 /* =========================================================
-   CELL
+   CELLS
 ========================================================= */
 
 .mine-cell {
-    aspect-ratio: 1 / 1;
-
     min-width: 0;
+
+    min-height: 0;
+
+    width: 100%;
+
+    height: 100%;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
+
+    padding: 0;
 
     background: #c0c0c0;
 
@@ -392,8 +447,8 @@ h1 {
         sans-serif;
 
     font-size: clamp(
-        13px,
-        3vw,
+        10px,
+        2.8vw,
         23px
     );
 
@@ -403,8 +458,6 @@ h1 {
 
     cursor: pointer;
 
-    padding: 0;
-
     user-select: none;
 
     touch-action: manipulation;
@@ -412,7 +465,7 @@ h1 {
 
 
 /* =========================================================
-   REVEALED CELL
+   REVEALED
 ========================================================= */
 
 .mine-cell.revealed {
@@ -467,12 +520,10 @@ h1 {
 
 .mine-cell.flagged {
     font-size: clamp(
-        13px,
-        3vw,
-        21px
+        10px,
+        2.5vw,
+        20px
     );
-
-    color: #000;
 }
 
 
@@ -481,13 +532,9 @@ h1 {
 ========================================================= */
 
 .mine-cell.mine {
-    background: #c0c0c0;
-
-    color: #000;
-
     font-size: clamp(
-        14px,
-        3vw,
+        11px,
+        2.7vw,
         23px
     );
 }
@@ -505,16 +552,7 @@ h1 {
 
 
 /* =========================================================
-   WRONG FLAG
-========================================================= */
-
-.mine-cell.wrong-flag {
-    color: #ff0000;
-}
-
-
-/* =========================================================
-   WIN BOARD
+   WIN
 ========================================================= */
 
 .mine-board.won {
@@ -530,11 +568,11 @@ h1 {
 
 .instructions {
     width: min(
-        100%,
+        90vw,
         700px
     );
 
-    margin-top: 15px;
+    margin-top: 8px;
 
     display: flex;
 
@@ -544,9 +582,11 @@ h1 {
 
     flex-wrap: wrap;
 
+    flex-shrink: 0;
+
     color: #555;
 
-    font-size: 12px;
+    font-size: 11px;
 
     text-align: center;
 }
@@ -554,15 +594,6 @@ h1 {
 
 .instructions p {
     margin: 0;
-}
-
-
-/* =========================================================
-   DISABLED STATE
-========================================================= */
-
-.mine-cell.disabled {
-    cursor: default;
 }
 
 
@@ -594,80 +625,95 @@ h1 {
 
 
     .game-container {
-        width: calc(100% - 20px);
+        width: calc(100% - 12px);
 
-        margin-top: 65px;
+        height: calc(100vh - 58px);
+
+        margin-top: 58px;
     }
 
 
     h1 {
-        font-size: 30px;
+        font-size: 27px;
     }
 
 
     .subtitle {
-        font-size: 13px;
-
-        margin-bottom: 14px;
-    }
-
-
-    .difficulty-buttons {
-        gap: 5px;
-
-        margin-bottom: 12px;
-    }
-
-
-    .difficulty-button {
-        padding: 7px 9px;
-
-        font-size: 11px;
-    }
-
-
-    .minefield-panel {
-        width: 100%;
-
-        min-height: 65px;
-
-        padding: 7px 8px;
-
-        gap: 8px;
-    }
-
-
-    .counter {
-        min-width: 75px;
-
-        height: 37px;
-
-        font-size: 17px;
-    }
-
-
-    .counter-icon {
-        font-size: 13px;
-    }
-
-
-    .face-button {
-        width: 42px;
-        height: 42px;
-
-        font-size: 23px;
-    }
-
-
-    #gameMessage {
-        margin: 11px 0;
+        margin: 4px 0 9px;
 
         font-size: 12px;
     }
 
 
+    .difficulty-buttons {
+        gap: 4px;
+
+        margin-bottom: 8px;
+    }
+
+
+    .difficulty-button {
+        padding: 6px 9px;
+
+        font-size: 10px;
+    }
+
+
+    .minefield-panel {
+        width: 94vw;
+
+        height: 58px;
+
+        padding: 6px 8px;
+
+        gap: 7px;
+    }
+
+
+    .counter {
+        min-width: 65px;
+
+        height: 35px;
+
+        font-size: 16px;
+    }
+
+
+    .counter-icon {
+        font-size: 12px;
+    }
+
+
+    .face-button {
+        width: 40px;
+
+        height: 40px;
+
+        font-size: 22px;
+    }
+
+
+    #gameMessage {
+        margin: 6px 0;
+
+        min-height: 16px;
+
+        font-size: 11px;
+    }
+
+
     .mine-board {
-        width: 100%;
+        width: 94vw;
+
+        /*
+            Same fixed board height for
+            every difficulty.
+        */
+
+        height: min(
+            58vh,
+            500px
+        );
 
         padding: 3px;
 
@@ -679,17 +725,19 @@ h1 {
         border-width: 2px;
 
         font-size: clamp(
-            11px,
-            4.5vw,
-            19px
+            9px,
+            3.8vw,
+            18px
         );
     }
 
 
     .instructions {
-        gap: 8px 14px;
+        margin-top: 6px;
 
-        font-size: 10px;
+        gap: 5px 12px;
+
+        font-size: 9px;
     }
 
 }
@@ -699,39 +747,111 @@ h1 {
    VERY SMALL PHONES
 ========================================================= */
 
-@media (max-width: 380px) {
-
-    .top-button {
-        font-size: 10px;
-
-        padding: 0 8px;
-    }
-
+@media (max-height: 650px) {
 
     .game-container {
-        width: calc(100% - 14px);
+        margin-top: 55px;
+
+        height: calc(100vh - 55px);
     }
 
 
-    .difficulty-button {
-        padding: 6px 7px;
+    h1 {
+        font-size: 24px;
+    }
 
-        font-size: 10px;
+
+    .subtitle {
+        display: none;
+    }
+
+
+    .difficulty-buttons {
+        margin-bottom: 5px;
+    }
+
+
+    .minefield-panel {
+        height: 52px;
     }
 
 
     .counter {
-        min-width: 65px;
+        height: 31px;
 
-        font-size: 15px;
+        min-width: 60px;
+
+        font-size: 14px;
     }
 
 
     .face-button {
-        width: 38px;
-        height: 38px;
+        width: 36px;
 
-        font-size: 21px;
+        height: 36px;
+
+        font-size: 20px;
+    }
+
+
+    #gameMessage {
+        margin: 4px 0;
+    }
+
+
+    .mine-board {
+        height: 55vh;
+    }
+
+
+    .instructions {
+        display: none;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL WIDTH
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .top-button {
+        padding: 0 8px;
+
+        font-size: 10px;
+    }
+
+
+    .game-container {
+        width: calc(100% - 8px);
+    }
+
+
+    .minefield-panel {
+        width: 96vw;
+    }
+
+
+    .mine-board {
+        width: 96vw;
+    }
+
+
+    .counter {
+        min-width: 58px;
+
+        font-size: 13px;
+    }
+
+
+    .face-button {
+        width: 35px;
+
+        height: 35px;
+
+        font-size: 19px;
     }
 
 }
