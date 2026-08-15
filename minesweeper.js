@@ -752,6 +752,8 @@ function toggleFlag(row, col) {
 
     checkWin();
 
+   updateFlagCounter();
+
 }
 
 
@@ -1541,3 +1543,5 @@ function updateFlagCounter() {
 ========================================================= */
 
 newGame();
+
+updateFlagCounter();
